@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+      a.navbar-brand(href='/') Chirihop's website
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div#navbarNav.collapse.navbar-collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href='/') Home
+          li.nav-item
+            a.nav-link(href='/links') Links
+          li.nav-item
+            a.nav-link(href='/about') About
+
+    div.container
+      block content
+
+    script(type="text/javascript" src='/javascripts/jquery.min.js')
+    script(type="text/javascript" src='/javascripts/popper.js')
+    script(type="text/javascript" src='/javascripts/bootstrap.min.js')
