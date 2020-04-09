@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'old-favicon.ico')));
 
 // Bootstrap 4 dependencies
 app.use('/stylesheets', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
