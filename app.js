@@ -6,7 +6,7 @@ var logger = require('morgan');
 var favicon = require('serve-favicon')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var curriculumRouter = require('./routes/curriculum');
 var aboutRouter = require('./routes/about');
 var linksRouter = require('./routes/links');
 
@@ -30,7 +30,7 @@ app.use('/javascripts', express.static(__dirname + '/node_modules/popper.js/dist
 app.use('/javascripts', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/curriculum', curriculumRouter);
 app.use('/about', aboutRouter);
 app.use('/links', linksRouter);
 

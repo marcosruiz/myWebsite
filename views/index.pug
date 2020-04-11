@@ -1,14 +1,42 @@
 extends layout
 
 block content
+  div.jumbotron.text-white
+    div.container
+      h1.display-4 Welcome to #{title}
+      p
+      p Work in progress...
+      div.progress
+        div.progress-bar(role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+  div.container
+    h2 About this webpage
+    p This project is deployed in a Raspberry Pi 4 using different technologies like Node 12, Express, Docker and Bootstrap 4 and a proxy with Nginx to add HTTPS.
+    p #[a(data-toggle="collapse" data-target="#dockerConfigYaml" aria-expanded="false" aria-controls="dockerConfigYaml") Click here] if you want to see the docker-config.yaml.
 
-  div.card.bg-dark.text-white
-    img.card-img.index-img(src="/images/kevin-mueller-iBER-hi4DyU-unsplash.jpg")
-    div.card-img-overlay
-      h5.card-title= title
-      h1.card-text Welcome and enjoy!
-      p.card-text Work in progress...
-        div.progress
-          div.progress-bar(role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100")
+    div#dockerConfigYaml.collapse
+      div.card
+        div.card-body
+          pre
+            code
+              include docker-compose.yaml
 
+    h2 Where to start?
 
+    div.row
+      div.col-md-3
+        div.card
+          img.card-img-top(src="/images/learn/pelado_nerd.jpg" alt="Pelado Nerd")
+          div.card-body
+            h5.card-title INSTALANDO DOCKER en una RASPBERRY PI
+            p.card-text Autor: Pelado Nerd
+            p.card-text En este video el autor de este canal explica como montar diferentes servicios en una Raspberry Pi usando Docker.
+            a.btn.btn-primary(href="https://youtu.be/pliGG1M87W8") Ir al video
+
+      div.col-md-3
+        div.card
+          img.card-img-top(src="/images/learn/antonio_sarosi.jpg" alt="Antonio Sarosi")
+          div.card-body
+            h5.card-title Jamás Entenderás Cómo Funciona un PC al 100%
+            p.card-text Autor: Antonio Sarosi
+            p.card-text En este video el autor de este canal explica a grandes rasgos como funciona un PC
+            a.btn.btn-primary(href="https://youtu.be/iOQnZKJ3fls") Ir al video
