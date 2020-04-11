@@ -1,0 +1,52 @@
+version: "2"
+services:
+  nginx-proxy:
+    image: budry/jwilder-nginx-proxy-arm
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /media/WDElements/certs:/etc/nginx/certs:ro
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    restart: always
+    volumes:
+      - /media/WDElements/certs:/etc/nginx/certs:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    volumes_from:
+      - nginx-proxy:rw
+
+  www:
+    image: nginx
+    restart: always
+    expose:
+      - 80
+    volumes:
+      - /media/WDElements/www2:/usr/share/nginx/html:ro
+    environment:
+      - VIRTUAL_HOST=markens.duckdns.org,www.markens.duckdns.org
+      - LETSENCRYPT_HOST=markens.duckdns.org,www.markens.duckdns.org
+      - LETSENCRYPT_EMAIL=sobrenombre@gmail.com
+
+  node:
+    image: "node:12"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - /media/WDElements/myWebsite:/home/node/app:ro
+    expose:
+      - 3000
+    command: "npm start"
+    environment:
+      - VIRTUAL_HOST=chirihop.duckdns.org,www.chirihop.duckdns.org
+      - LETSENCRYPT_HOST=chirihop.duckdns.org,www.chirihop.duckdns.org
+      - LETSENCRYPT_EMAIL=sobrenombre@gmail.com
