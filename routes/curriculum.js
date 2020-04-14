@@ -1,9 +1,14 @@
 var express = require('express');
+var fs = require('fs');
 var router = express.Router();
 
 /* GET curriculum. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+
+  var data = fs.readFileSync('./public/pdfs/curriculum.pdf');
+  res.contentType("application/pdf");
+  res.send(data);
+
 });
 
 module.exports = router;

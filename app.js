@@ -28,6 +28,7 @@ app.use('/stylesheets', express.static(__dirname + '/node_modules/bootstrap/dist
 app.use('/javascripts', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/javascripts', express.static(__dirname + '/node_modules/popper.js/dist/umd'));
 app.use('/javascripts', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+// app.use('/javascripts/animate.css', express.static(__dirname + '/node_modules/animate.css/animate.css'));
 
 app.use('/', indexRouter);
 app.use('/curriculum', curriculumRouter);
