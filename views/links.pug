@@ -1,10 +1,31 @@
 extends layout
 
 block content
-  h5= title
-  div.row
-    div.col-12
-      ul.list-group
-        a.list-group-item.list-group-item-action(href="chirihop.duckdns.org:9000") Go to Portainer
-        a.list-group-item.list-group-item-action(href="chirihop.duckdns.org:9091") Go to Transmission
-        a.list-group-item.list-group-item-action(href="chirihop.duckdns.org:32400") Go to Plex
+  div.container
+    h5= title
+
+    div.row
+      div.col-md-4
+        div.card
+          img.card-img-top(src="/images/links/portainer.png" alt="Portainer")
+          div.card-body
+            h5.card-title Portainer
+            p.card-text Portainer es un contenedor de Docker pensado para gestionar de manera gráfica todos los contenedores
+            a.btn.btn-primary(href="http://chirihop.duckdns.org:9000") Ir a mi Portainer
+
+      div.col-md-4
+        div.card
+          img.card-img-top(src="/images/links/transmission.png" alt="Transmission")
+          div.card-body
+            h5.card-title Transmission
+            p.card-text Transmision es un gestor de torrents rápido y ligero
+            a.btn.btn-primary(href="chirihop.duckdns.org:9091") Ir a mi Transmission
+
+      div.col-md-4
+        div.card
+          img.card-img-top(src="/images/links/plex.jpg" alt="Plex")
+          div.card-body
+            h5.card-title Plex
+            p.card-text Plex es un gestor de contenido de películas, series y música
+            a.btn.btn-primary(href="chirihop.duckdns.org:32400") Ir a mi Plex
+

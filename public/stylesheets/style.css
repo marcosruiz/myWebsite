@@ -1,5 +1,5 @@
 body {
-  padding: 70px;
+  padding-top: 54px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,7 +7,33 @@ a {
   color: #00B7FF;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
+.index-img {
+  width: 100%;
+  height: 45vw;
+  object-fit: cover;
 }
+
+.jumbotron {
+  background-image: url("/images/kevin-mueller-iBER-hi4DyU-unsplash.jpg");
+  background-size: cover;
+  border-radius: 0px;
+}
+
+.container{
+  margin-top: 1rem;
+}
+
+.card-img-top{
+  height: 15vw;
+  object-fit: cover;
+}
+
+.card{
+  margin-top: 1rem;
+}
+
+.mt-auto{
+  margin-top: auto!important;
+}
+
+.instagram-media{ min-width: auto !important; }

@@ -6,7 +6,7 @@ var logger = require('morgan');
 var favicon = require('serve-favicon')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var curriculumRouter = require('./routes/curriculum');
 var aboutRouter = require('./routes/about');
 var linksRouter = require('./routes/links');
 
@@ -21,16 +21,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'old-favicon.ico')));
 
 // Bootstrap 4 dependencies
 app.use('/stylesheets', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/javascripts', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/javascripts', express.static(__dirname + '/node_modules/popper.js/dist/umd'));
 app.use('/javascripts', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+// app.use('/javascripts/animate.css', express.static(__dirname + '/node_modules/animate.css/animate.css'));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/curriculum', curriculumRouter);
 app.use('/about', aboutRouter);
 app.use('/links', linksRouter);
 
