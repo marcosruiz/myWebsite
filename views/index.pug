@@ -3,7 +3,7 @@ extends layout
 block content
   div.jumbotron.text-white
     div.container
-      h1.display-4 Welcome to #{title}
+      h1.display-4 Welcome #{session.email}
       p
       p Work in progress...
       div.progress
@@ -11,8 +11,7 @@ block content
   div.container
     h2 About this webpage
     p This project is deployed in a Raspberry Pi 4 using different technologies like Node 12, Express, Docker and Bootstrap 4 and a proxy with Nginx to add HTTPS.
-    p #[a(data-toggle="collapse" data-target="#dockerConfigYaml" aria-expanded="false" aria-controls="dockerConfigYaml") Click here] if you want to see the docker-config.yaml.
-
+    p #[a(href="#" type="button" data-toggle="collapse" data-target="#dockerConfigYaml" aria-expanded="false" aria-controls="dockerConfigYaml") Click here] if you want to see the docker-config.yaml.
     div#dockerConfigYaml.collapse
       div.card
         div.card-body
@@ -30,7 +29,7 @@ block content
             h5.card-title INSTALANDO DOCKER en una RASPBERRY PI
             p.card-text Autor: Pelado Nerd
             p.card-text En este video el autor de este canal explica como montar diferentes servicios en una Raspberry Pi usando Docker.
-            a.btn.btn-primary(href="https://youtu.be/pliGG1M87W8") Ir al video
+            a.stretched-link.btn.btn-primary(href="https://youtu.be/pliGG1M87W8") Ir al video
 
       div.col-md-3
         div.card
@@ -39,7 +38,7 @@ block content
             h5.card-title Jamás Entenderás Cómo Funciona un PC al 100%
             p.card-text Autor: Antonio Sarosi
             p.card-text En este video el autor de este canal explica a grandes rasgos como funciona un PC
-            a.btn.btn-primary(href="https://youtu.be/iOQnZKJ3fls") Ir al video
+            a.stretched-link.btn.btn-primary(href="https://youtu.be/iOQnZKJ3fls") Ir al video
 
       div.col-md-3
         div.card
@@ -48,7 +47,7 @@ block content
             h5.card-title ¿Qué leches es SOLID?
             p.card-text Autor: BettaTech
             p.card-text En este video el autor de este canal explica los principios de programación SOLID (Single Responsibility, Open Closed, Liskov Substitution, Interface Segregation, Dependency Inversion)
-            a.btn.btn-primary(href="https://youtu.be/2X50sKeBAcQ") Ir al video
+            a.stretched-link.btn.btn-primary(href="https://youtu.be/2X50sKeBAcQ") Ir al video
 
       div.col-md-3
         div.card
@@ -57,4 +56,4 @@ block content
             h5.card-title Git - la guía sencilla
             p.card-text Autor: Roger Dudler (traducido por @lfbarragan y @adrimatellanes)
             p.card-text Una guía sencilla para comenzar con git
-            a.btn.btn-primary(href="https://rogerdudler.github.io/git-guide/index.es.html") Ir a la guía
+            a.stretched-link.btn.btn-primary(href="https://rogerdudler.github.io/git-guide/index.es.html") Ir a la guía

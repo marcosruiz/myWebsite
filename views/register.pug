@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div.container
+    div.form-row
+      div.col-md-6
+        form(method="post" action="/api/login")
+          h1 Login
+          div.form-group
+            label(for="emailLogin" aria-describedby="emailHelp") Email
+            input#emailLogin.form-control(type="text" name="email")
+          div.form-group
+            label(for = "passwordLogin") Password
+            input#passwordLogin.form-control(type="password" name="password")
+          button.btn.btn-primary(type="submit") Login
+
+      div.col-md-6
+        form(method="post" action="/api/register")
+          h1 Registro
+          div.form-group
+            label(for="emailRegister" aria-describedby="emailHelp") Email
+            input#emailRegister.form-control(type="text" name="email")
+          div.form-group
+            label(for="passwordRegister") Password
+            input#passwordRegister.form-control(type="password" name="password")
+          div.form-group
+            label(for="secondPasswordRegister") Repeat password
+            input#secondPasswordRegister.form-control(type="password" name="secondPassword")
+          button.btn.btn-primary(type="submit") Register

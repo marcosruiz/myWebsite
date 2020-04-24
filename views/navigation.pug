@@ -6,7 +6,14 @@ block navigation
       span.navbar-toggler-icon
     div#navbarNav.collapse.navbar-collapse
       ul.navbar-nav
-        li.nav-item
-          a.nav-link(href='/links') Links
+        if session.email != null
+          li.nav-item
+            a.nav-link(href='/links') Links
         li.nav-item
           a.nav-link(href='/about') About me
+        if session.email != null
+          li.nav-item
+            a.nav-link(href='/user') Welcome #{session.email}
+        else
+          li.nav-item
+            a.nav-link(href='/register') Login or register
