@@ -7,7 +7,7 @@ block content
         form(method="post" action="/api/login")
           h1 Login
           div.form-group
-            label(for="emailLogin" aria-describedby="emailHelp") Email
+            label(for="emailLogin") Email
             input#emailLogin.form-control(type="text" name="email")
           div.form-group
             label(for = "passwordLogin") Password
@@ -18,7 +18,7 @@ block content
         form(method="post" action="/api/register")
           h1 Registro
           div.form-group
-            label(for="emailRegister" aria-describedby="emailHelp") Email
+            label(for="emailRegister") Email
             input#emailRegister.form-control(type="text" name="email")
           div.form-group
             label(for="passwordRegister") Password

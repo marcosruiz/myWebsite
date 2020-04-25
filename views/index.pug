@@ -22,38 +22,96 @@ block content
     h2 Where to start?
 
     div.row
-      div.col-md-3
-        div.card
-          img.card-img-top(src="/images/learn/pelado_nerd.jpg" alt="Pelado Nerd")
-          div.card-body
-            h5.card-title INSTALANDO DOCKER en una RASPBERRY PI
-            p.card-text Autor: Pelado Nerd
-            p.card-text En este video el autor de este canal explica como montar diferentes servicios en una Raspberry Pi usando Docker.
-            a.stretched-link.btn.btn-primary(href="https://youtu.be/pliGG1M87W8") Ir al video
+      div.col-md-6
+        div.card.mb-3
+          div.row.no-gutters
+            div.col-md-4
+              img.card-img-top(src="/images/learn/pelado_nerd.jpg" alt="Pelado Nerd" style="height: 100%;")
+            div.col-md-8
+              div.card-body
+                h5.card-title INSTALANDO DOCKER en una RASPBERRY PI
+                p.card-text Autor: Pelado Nerd
+                p.card-text En este video el autor de este canal explica como montar diferentes servicios en una Raspberry Pi usando Docker.
+                a.stretched-link.btn.btn-primary(href="https://youtu.be/pliGG1M87W8") Ir al video
 
-      div.col-md-3
-        div.card
-          img.card-img-top(src="/images/learn/antonio_sarosi.jpg" alt="Antonio Sarosi")
-          div.card-body
-            h5.card-title Jamás Entenderás Cómo Funciona un PC al 100%
-            p.card-text Autor: Antonio Sarosi
-            p.card-text En este video el autor de este canal explica a grandes rasgos como funciona un PC
-            a.stretched-link.btn.btn-primary(href="https://youtu.be/iOQnZKJ3fls") Ir al video
+      div.col-md-6
+        div.card.mb-3
+          div.row.no-gutters
+            div.col-md-4
+              img.card-img-top(src="/images/learn/antonio_sarosi.jpg" alt="Antonio Sarosi" style="height: 100%;")
+            div.col-md-8
+              div.card-body
+                h5.card-title Jamás Entenderás Cómo Funciona un PC al 100%
+                p.card-text Autor: Antonio Sarosi
+                p.card-text En este video el autor de este canal explica a grandes rasgos como funciona un PC
+                a.stretched-link.btn.btn-primary(href="https://youtu.be/iOQnZKJ3fls") Ir al video
 
-      div.col-md-3
-        div.card
-          img.card-img-top(src="/images/learn/bettatech.jpg" alt="BettaTech")
-          div.card-body
-            h5.card-title ¿Qué leches es SOLID?
-            p.card-text Autor: BettaTech
-            p.card-text En este video el autor de este canal explica los principios de programación SOLID (Single Responsibility, Open Closed, Liskov Substitution, Interface Segregation, Dependency Inversion)
-            a.stretched-link.btn.btn-primary(href="https://youtu.be/2X50sKeBAcQ") Ir al video
+      div.col-md-6
+        div.card.mb-3
+          div.row.no-gutters
+            div.col-md-4
+              img.card-img-top(src="/images/learn/bettatech.jpg" alt="BettaTech" style="height: 100%;")
+            div.col-md-8
+              div.card-body
+                h5.card-title ¿Qué leches es SOLID?
+                p.card-text Autor: BettaTech
+                p.card-text En este video el autor de este canal explica los principios de programación SOLID (Single Responsibility, Open Closed, Liskov Substitution, Interface Segregation, Dependency Inversion)
+                a.stretched-link.btn.btn-primary(href="https://youtu.be/2X50sKeBAcQ") Ir al video
 
-      div.col-md-3
-        div.card
-          img.card-img-top(src="/images/learn/git.png" alt="Git")
-          div.card-body
-            h5.card-title Git - la guía sencilla
-            p.card-text Autor: Roger Dudler (traducido por @lfbarragan y @adrimatellanes)
-            p.card-text Una guía sencilla para comenzar con git
-            a.stretched-link.btn.btn-primary(href="https://rogerdudler.github.io/git-guide/index.es.html") Ir a la guía
+      div.col-md-6
+        div.card.mb-3
+          div.row.no-gutters
+            div.col-md-4
+              img.card-img-top(src="/images/learn/git.png" alt="Git" style="height: 100%;")
+            div.col-md-8
+              div.card-body
+                h5.card-title Git - la guía sencilla
+                p.card-text Autor: Roger Dudler (traducido por @lfbarragan y @adrimatellanes)
+                p.card-text Una guía sencilla para comenzar con git
+                a.stretched-link.btn.btn-primary(href="https://rogerdudler.github.io/git-guide/index.es.html") Ir a la guía
+
+      div.col-md-6
+        div.card.mb-3
+          div.row.no-gutters
+            div.col-md-4
+              img.card-img-top(src="/images/learn/apache_cassandra.png" alt="Apache Cassandra" style="height: 100%;")
+            div.col-md-8
+              div.card-body
+                h5.card-title Apache Cassandra - Tutorial 1 - Introduction to Apache Cassandra
+                p.card-text Autor: jumpstartCS
+                p.card-text En este video el autor de este canal nos introduce a la base de datos noSQL Apache Cassandra, usada las webs de Twitter, Netflix, Facebook... debido a su gran rendimiento.
+                a.stretched-link.btn.btn-primary(href="https://youtu.be/s1xc1HVsRk0") Ir al video
+
+    if session.email != null
+      h2 Let your comment
+      form(method="post" action="/api/comment")
+        div.form-group
+          label(for="titleComment") Title
+          input#titleComment(name="titleComment").form-control
+        div.form-group
+          label(for="comment") Comment
+          textarea#comment(name="comment").form-control
+        button.btn.btn-primary(type="submit") Send comment
+
+    h2 Comments
+    if comments.length == 0
+      p There is no comments
+    else
+      div.row
+        each val in comments
+          if val.user_email == session.email
+            div.col-md-6
+              div.card
+                div.card-body.text-white.bg-primary
+                  h5.card-title #{val.title_comment}
+                  p.card-text #{val.comment}
+                  p.card-text
+                    small By: #{val.user_email}
+          else
+            div.col-md-6
+              div.card
+                div.card-body
+                  h5.card-title #{val.title_comment}
+                  p.card-text #{val.comment}
+                  p.card-text
+                    small By: #{val.user_email}

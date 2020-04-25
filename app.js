@@ -13,6 +13,7 @@ var aboutRouter = require('./routes/about');
 var linksRouter = require('./routes/links');
 var registerRouter = require('./routes/register');
 var apiRouter = require('./routes/api');
+var userRouter = require('./routes/user');
 
 var app = express();
 
@@ -51,7 +52,9 @@ app.use('/curriculum', curriculumRouter);
 app.use('/about', aboutRouter);
 app.use('/links', linksRouter);
 app.use('/register', registerRouter);
+app.use('/user', userRouter);
 app.use('/api', apiRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
