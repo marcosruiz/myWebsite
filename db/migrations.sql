@@ -1,19 +1,23 @@
-CREATE KEYSPACE IF NOT EXISTS pro WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 3 };
+CREATE KEYSPACE IF NOT EXISTS pro WITH REPLICATION = {
+'class' : 'NetworkTopologyStrategy',
+'datacenter1' : 1
+};
+
 USE pro;
-CREATE TABLE pro.users (
+
+CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY,
-  email text PRIMARY KEY,
-  username text PRIMARY KEY,
+  email text,
+  username text,
   email_confirmed boolean,
-  creation_date date,
   password text,
   country int
 );
-CREATE TABLE pro.comments (
+
+CREATE TABLE IF NOT EXISTS  comments (
   id UUID PRIMARY KEY,
-  user_id UUiD,
+  user_id UUID,
   user_email text,
   title_comment text,
-  comment text,
-  creation_date date,
+  comment text
 );

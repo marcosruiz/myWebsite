@@ -8,12 +8,12 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 
-var indexRouter = require('./routes/index');
-var curriculumRouter = require('./routes/curriculum');
-var aboutRouter = require('./routes/about');
-var linksRouter = require('./routes/links');
-var registerRouter = require('./routes/register');
-var userRouter = require('./routes/user');
+var indexRouter = require('./routes/index.routes');
+var curriculumRouter = require('./routes/curriculum.routes');
+var aboutRouter = require('./routes/about.routes');
+var linksRouter = require('./routes/links.routes');
+var registerRouter = require('./routes/register.routes');
+var userRouter = require('./routes/user.routes');
 
 var app = express();
 
@@ -34,6 +34,8 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+// Middlewares
 app.use(function(req,res,next){
   res.locals.session = req.session;
   next();
@@ -44,9 +46,8 @@ app.use('/stylesheets', express.static(__dirname + '/node_modules/bootstrap/dist
 app.use('/javascripts', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/javascripts', express.static(__dirname + '/node_modules/popper.js/dist/umd'));
 app.use('/javascripts', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
-// app.use('/javascripts/animate.css', express.static(__dirname + '/node_modules/animate.css/animate.css'));
 
-
+// Routes
 app.use('/', indexRouter);
 app.use('/curriculum', curriculumRouter);
 app.use('/about', aboutRouter);
@@ -54,19 +55,19 @@ app.use('/links', linksRouter);
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
 
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_CLIENT_ID,
-    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL
-  },
-  function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function () {
-      //Check whether the User exists or not using profile.id
-
-      return done(null, profile);
-    });
-  }
-));
+// passport.use(new FacebookStrategy({
+//     clientID: process.env.FACEBOOK_CLIENT_ID,
+//     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+//     callbackURL: process.env.FACEBOOK_CALLBACK_URL
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//     process.nextTick(function () {
+//       //Check whether the User exists or not using profile.id
+//
+//       return done(null, profile);
+//     });
+//   }
+// ));
 
 
 // catch 404 and forward to error handler
@@ -84,5 +85,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Static files
 
 module.exports = app;
