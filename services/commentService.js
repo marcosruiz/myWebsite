@@ -22,5 +22,14 @@ function getUserComments(userId, callback){
     });
 }
 
+function addComment(userId, userEmail, titleComment, comment, callback){
+  const query = 'INSERT INTO comments (id, user_id, user_email, title_comment, comment) VALUES (uuid(), ?, ?, ?, ?);';
+  client.execute(query, [userId, userEmail, titleComment, comment])
+    .then(result => {
+      callback(result.rows);
+    });
+}
+
 exports.getAllComments = getAllComments;
 exports.getUserComments = getUserComments;
+exports.addComment = addComment;

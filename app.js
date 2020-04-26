@@ -6,13 +6,13 @@ var logger = require('morgan');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var curriculumRouter = require('./routes/curriculum');
 var aboutRouter = require('./routes/about');
 var linksRouter = require('./routes/links');
 var registerRouter = require('./routes/register');
-var apiRouter = require('./routes/api');
 var userRouter = require('./routes/user');
 
 var app = express();
@@ -30,7 +30,7 @@ app.use(favicon(path.join(__dirname, 'public', 'old-favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
-  secret: 'sec666ret',
+  secret: process.env.SESSION_SECRET || 'sec666ret',
   resave: true,
   saveUninitialized: true
 }));
@@ -53,7 +53,20 @@ app.use('/about', aboutRouter);
 app.use('/links', linksRouter);
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
-app.use('/api', apiRouter);
+
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL
+  },
+  function(accessToken, refreshToken, profile, done) {
+    process.nextTick(function () {
+      //Check whether the User exists or not using profile.id
+
+      return done(null, profile);
+    });
+  }
+));
 
 
 // catch 404 and forward to error handler
